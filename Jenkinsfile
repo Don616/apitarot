@@ -3,10 +3,15 @@ pipeline {
 
     stages{
 
-        stage('Build docker image'){
+        stage('Build docker image and Push'){
             steps{
                 script{
                     dockerapp = docker.build("don616/apitarot:${env.BUILD_ID}",'-f ./Dockerfile .')
+                }
+                script{
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-don616')
+                    dockerapp.push("${env.BUILD_ID}")
+                    dockerapp.push('latest')
                 }
             }
         }
