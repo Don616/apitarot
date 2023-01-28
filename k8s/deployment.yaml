@@ -1,0 +1,33 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apitarot
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: apitarot
+    spec:
+      containers:
+      - name: apitarot
+        image: don616/apitarot:latest
+        ports:
+        - containerPort: 8081
+  selector:
+    matchLabels:
+      app: geofence
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: apitarot
+spec:
+  selector:
+    app: apitarot
+  ports:
+  - port: 8081
+    targetPort: 8081
