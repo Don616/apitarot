@@ -9,9 +9,11 @@ pipeline {
                     dockerapp = docker.build("don616/apitarot:${env.BUILD_ID}",'-f ./Dockerfile .')
                 }
                 script{
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-don616')
-                    dockerapp.push("${env.BUILD_ID}")
-                    dockerapp.push('latest')
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-don616'){
+                        dockerapp.push("${env.BUILD_ID}")
+                        dockerapp.push('latest')
+                    }
+                        
                 }
             }
         }
