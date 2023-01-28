@@ -17,7 +17,7 @@ spec:
         - containerPort: 8081
   selector:
     matchLabels:
-      app: geofence
+      app: apitarot
 
 ---
 
