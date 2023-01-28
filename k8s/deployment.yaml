@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: apitarot
-        image: don616/apitarot:latest
+        image: don616/apitarot:{{TAG}}
         ports:
         - containerPort: 8081
   selector:
