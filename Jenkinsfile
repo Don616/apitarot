@@ -1,5 +1,5 @@
 pipeline {
-    agent eny
+    agent any
 
     stages{
 
