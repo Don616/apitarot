@@ -9,6 +9,10 @@ spec:
     metadata:
       labels:
         app: apitarot
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8081"
+        prometheus.io/path: "/actuator/prometheus"
     spec:
       containers:
       - name: apitarot
